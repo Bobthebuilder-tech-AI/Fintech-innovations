@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <style>
+        :root {
+            --bg: #f4f4f4;
+            --text: #333;
+            --primary: #004481;
+            --secondary: #036;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #f4f4f4;
+            --primary: #00aaff;
+            --secondary: #0077aa;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--secondary);
+        }
+
+            nav a {
+                color: white;
+                padding: 1rem;
+                text-decoration: none;
+            }
+
+                nav a:hover {
+                    background: var(--primary);
+                }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .dark-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="dark-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+
+    <header>
+        <h1>About Me</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="My projects.html">Projects</a>
+        <a href="Budget calculator.html">Budget Tool</a>
+        <a href="#About.html">About</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <div class="container">
+        <h2>My Journey in the FNB App Academy</h2>
+        <p>I’m a passionate developer working on innovative fintech solutions. This portfolio showcases my learnings and real-world project experience at the FNB App Academy.</p>
+        <p>Skills: JavaScript, HTML, CSS, React, Firebase, Git, UX Design, API integration, and more.</p>
+    </div>
+
+    <footer>
+        &copy; 2025 About Me Page
+    </footer>
+
+    <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+    </script>
+</body>
+</html>

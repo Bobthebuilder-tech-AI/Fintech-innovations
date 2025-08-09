@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FNB App Academy Project</title>
+
+    <style>
+        :root {
+            --bg: #f4f4f4;
+            --text: #333;
+            --primary: #004481;
+            --secondary: #036;
+            --card-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg: #121212;
+            --text: #f4f4f4;
+            --primary: #00aaff;
+            --secondary: #0077aa;
+            --card-bg: #1e1e1e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--secondary);
+            flex-wrap: wrap;
+        }
+
+            nav a {
+                color: white;
+                padding: 1rem;
+                text-decoration: none;
+                transition: background 0.3s;
+            }
+
+                nav a:hover {
+                    background: var(--primary);
+                }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+            .hero h1 {
+                color: var(--primary);
+                margin-bottom: 1rem;
+            }
+
+            .hero button {
+                background: var(--primary);
+                color: white;
+                padding: 0.75rem 1.5rem;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s ease-in-out;
+            }
+
+                .hero button:hover {
+                    background: var(--secondary);
+                }
+
+        .projects {
+            margin-top: 3rem;
+        }
+
+            .projects h2 {
+                margin-bottom: 1rem;
+            }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-section, .calculator-section {
+            margin-top: 3rem;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+            form button:hover {
+                background: var(--secondary);
+            }
+
+        .calculator-section input {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #ddd;
+            margin-top: 2rem;
+        }
+
+        .dark-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="dark-toggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+
+    <header>
+        <h1>My FNB App Academy Project</h1>
+    </header>
+
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#calculator">Budget Tool</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <h1>Welcome to My Fintech Innovation</h1>
+            <p>This is a sample interactive site built to showcase skills from the FNB App Academy.</p>
+            <button onclick="sayHello()">Click Me</button>
+        </section>
+
+        <!-- Projects -->
+        <section class="projects" id="projects">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>Smart Budgeting App</h3>
+                <p>A mobile-first tool to help users manage and categorize their expenses easily.</p>
+            </div>
+            <div class="project-card">
+                <h3>Microloan Simulator</h3>
+                <p>Concept for an FNB feature that allows peer-to-peer lending with automatic repayment options.</p>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="calculator-section" id="calculator">
+            <h2>Simple Budget Calculator</h2>
+            <p>Enter your income and expenses to calculate your remaining balance:</p>
+            <input type="number" id="income" placeholder="Monthly Income (R)" />
+            <input type="number" id="expenses" placeholder="Monthly Expenses (R)" />
+            <button onclick="calculateBudget()">Calculate</button>
+            <p id="result"></p>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="form-section" id="contact">
+            <h2>Contact Me</h2>
+            <form onsubmit="submitForm(event)">
+                <input type="text" id="name" placeholder="Your Name" required />
+                <input type="email" id="email" placeholder="Your Email" required />
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <p id="formMessage"></p>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2025 My Fintech Site. Built with ❤️ for the FNB App Academy.
+    </footer>
+
+    <script>
+    function sayHello() {
+      alert("Welcome! Let’s innovate together.");
+    }
+
+    function calculateBudget() {
+      const income = parseFloat(document.getElementById('income').value);
+      const expenses = parseFloat(document.getElementById('expenses').value);
+      const result = document.getElementById('result');
+
+      if (isNaN(income) || isNaN(expenses)) {
+        result.textContent = "Please enter valid numbers for both fields.";
+        return;
+      }
+
+      const balance = income - expenses;
+      result.textContent = `You have R${balance.toFixed(2)} remaining this month.`;
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const formMessage = document.getElementById('formMessage');
+
+      if (!name || !email || !message) {
+        formMessage.textContent = "Please fill out all fields.";
+        return;
+      }
+
+      formMessage.textContent = `Thanks, ${name}! I'll get back to you shortly.`;
+      event.target.reset();
+    }
+    </script>
+
+</body>
+</html>
